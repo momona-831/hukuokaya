@@ -1,0 +1,30 @@
+body{
+    text-align: center;
+}
+.accountitle{
+    text-align: center;
+}
+.accountinfo-item {
+  display: flex;
+  align-items: center;
+  background-color: #ebebeb;
+  border-radius: 12px;
+  border: 1px solid #d8d8d8;
+  padding: 20px;
+  margin-top: 7px;
+  width: 90%;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+.account-info-button{
+    color: #ffffff;
+    background-color: #4f4f4f;
+    margin-top: 15px;
+    padding:10px;
+    border-radius: 5px;
+}
+
+.account-info-button:hover {
+	background-color: #5b5b5b;
+}
