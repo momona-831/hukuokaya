@@ -2,7 +2,7 @@
 body {
   margin: 0;
   font-family: "Noto Sans JP", sans-serif;
-  background-color: #faf7fc;
+  background-color: #ffffff;
   color: #555;
 }
 
@@ -13,7 +13,7 @@ body {
   left: 0;
   width: 70px;
   height: 100vh;
-  background-color: #f4e9fa;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -59,10 +59,10 @@ body {
   right: 40px;
 }
 .back:hover {
-  background-color: #d8d8d8;
+  background-color: #ffffff;
 }
 .cancel:hover {
-  background-color: #d8d8d8;
+  background-color: #ffffff;
 }
 
 /* タイトル */
@@ -85,7 +85,7 @@ h1 {
 .mypage-item {
   display: flex;
   align-items: center;
-  background-color: #ebebeb;
+  background-color: #ffffff;
   border-radius: 12px;
   border: 1px solid #d8d8d8;
   padding: 20px;

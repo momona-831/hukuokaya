@@ -11,7 +11,7 @@ body {
   left: 0;
   width: 70px;
   height: 100vh;
-  background-color: #f4e9fa;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -56,10 +56,10 @@ body {
   right: 40px;
 }
 .back:hover{
-  background-color: #d8d8d8;
+  background-color: #ffffff;
 }
 .cancel:hover{
-  background-color: #d8d8d8;
+  background-color: #ffffff;
 }
 /* タイトル */
 h1 {

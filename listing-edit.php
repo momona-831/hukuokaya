@@ -35,7 +35,7 @@ if (!$product) {
     <link rel="stylesheet" href="css/listing.css">
 </head>
 <body>
-    <nav class="navigation-rail">
+      <nav class="navigation-rail">
       <div class="nav-item">
         <a href="mainpage.php">
           <img src="img/click_scam.jpg" alt="メインページ" />

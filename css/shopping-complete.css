@@ -30,7 +30,7 @@
 .complete-box {
   margin: 48px auto;
   max-width: 480px;
-  background-color: #f3edf7;
+  background-color: #ffffff;
   border-radius: 16px;
   padding: 48px 24px;
   text-align: center;
@@ -61,7 +61,7 @@
   width: 80px;
   height: 80px;
   border-radius: 8px;
-  background-color: #e9e2ef;
+  background-color: #ffffff;
 }
 
 .item-text p {

@@ -108,75 +108,75 @@ $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </nav>
 
   <div class="content"> 
-  <h1>商品検索</h1>
+      <h1>商品検索</h1>
 
-  <!-- 検索フォーム -->
-  <form method="GET" action="">
-      <div class="search_box">
-            <input 
-              type="text" 
-              name="search_box" 
-              placeholder="商品名やカテゴリで検索できます"
-              value="<?= htmlspecialchars($keyword) ?>"
-            >
-            <button class="enter">検索</button>
+      <!-- 検索フォーム -->
+      <form method="GET" action="">
+          <div class="search_box">
+                <input 
+                  type="text" 
+                  name="search_box" 
+                  placeholder="商品名やカテゴリで検索できます"
+                  value="<?= htmlspecialchars($keyword) ?>"
+                >
+                <button class="enter">検索</button>
+          </div>
+      </form>
+
+      <!-- 並び替えボタン -->
+      <div class="menu-buttons">
+        <form method="GET" action="">
+          <input type="hidden" name="search_box" value="<?= htmlspecialchars($keyword) ?>">
+          <button class="category" name="sort" value="new">新着順</button>
+          <button class="category" name="sort" value="popular">人気順</button>
+          <button class="category" name="sort" value="price">価格順</button>
+        </form>
       </div>
-  </form>
 
-  <!-- 並び替えボタン -->
-  <div class="menu-buttons">
-    <form method="GET" action="">
-      <input type="hidden" name="search_box" value="<?= htmlspecialchars($keyword) ?>">
-      <button class="category" name="sort" value="new">新着順</button>
-      <button class="category" name="sort" value="popular">人気順</button>
-      <button class="category" name="sort" value="price">価格順</button>
-    </form>
-  </div>
+      <!-- 検索結果（カード表示） -->
+      <?php if (count($items) === 0): ?>
+          <p>該当する商品がありません。</p>
+      <?php else: ?>
+        <div class="card-container">
+          <?php foreach($items as $item): ?>
+            <div class="card">
+              <div class="card-img">
+                <?php if (!empty($item['image'])): ?>
+                    <img src="<?= htmlspecialchars($item['image']) ?>" alt="商品画像">
+                <?php else: ?>
+                    <img src="img/noimage.png" alt="画像なし">
+                <?php endif; ?>
+              </div>
+              <div class="card-info">
+                <div class="title"><?= htmlspecialchars($item['product_name']) ?></div>
 
-  <!-- 検索結果（カード表示） -->
-  <?php if (count($items) === 0): ?>
-      <p>該当する商品がありません。</p>
-  <?php else: ?>
-    <div class="card-container">
-      <?php foreach($items as $item): ?>
-        <div class="card">
-          <div class="card-img">
-            <?php if (!empty($item['image'])): ?>
-                <img src="<?= htmlspecialchars($item['image']) ?>" alt="商品画像">
-            <?php else: ?>
-                <img src="img/noimage.png" alt="画像なし">
-            <?php endif; ?>
-          </div>
-          <div class="card-info">
-            <div class="title"><?= htmlspecialchars($item['product_name']) ?></div>
+                <div class="info-row">
+                  <span class="label">出品日</span>
+                  <span class="value"><?= htmlspecialchars($item['date']) ?></span>
+                </div>
 
-            <div class="info-row">
-              <span class="label">出品日</span>
-              <span class="value"><?= htmlspecialchars($item['date']) ?></span>
+                <div class="info-row">
+                  <span class="label">価格</span>
+                  <span class="value">¥<?= number_format($item['price']) ?></span>
+                </div>
+
+                <div class="info-row">
+                  <span class="label">カテゴリ</span>
+                  <span class="value"><?= htmlspecialchars($item['category']) ?></span>
+                </div>
+
+                <div class="info-row">
+                  <span class="label">説明</span>
+                  <span class="value"><?= nl2br(htmlspecialchars($item['product_detail'])) ?></span>
+                </div>
+
+                <button class="buy-again">詳細を見る</button>
+              </div>
             </div>
-
-            <div class="info-row">
-              <span class="label">価格</span>
-              <span class="value">¥<?= number_format($item['price']) ?></span>
-            </div>
-
-            <div class="info-row">
-              <span class="label">カテゴリ</span>
-              <span class="value"><?= htmlspecialchars($item['category']) ?></span>
-            </div>
-
-            <div class="info-row">
-              <span class="label">説明</span>
-              <span class="value"><?= nl2br(htmlspecialchars($item['product_detail'])) ?></span>
-            </div>
-
-            <button class="buy-again">詳細を見る</button>
-          </div>
+          <?php endforeach; ?>
         </div>
-      <?php endforeach; ?>
-    </div>
-  <?php endif; ?>
-</div>
+      <?php endif; ?>
+  </div>
   <footer class="footer">
     <ul class="footer__links">
         <li><a href="">ルール</a></li>

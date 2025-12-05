@@ -6,7 +6,7 @@ body {
 }
 
 .container {
-    background-color: #fff;
+    background-color: #ffffff;
     width: 440px;
     margin: 60px auto;
     padding: 30px;
@@ -55,7 +55,7 @@ input {
 button {
     display: block;
     width: 100%;
-    background-color: #555;
+    background-color: #ffffff;
     color: #fff;
     padding: 10px;
     border: none;
