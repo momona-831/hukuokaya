@@ -14,7 +14,7 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $product_id = $_GET['product_id'];
 
 // 未ログインの場合は member_id = 0 を使う
-$member_id = $_SESSION['member_id'] ?? 0;
+$member_id = $_SESSION['member_id'] ?? null;
 
 // ▼ 閲覧ログを product_view に記録（人気タグ用）
 $sql_view = $pdo->prepare("
