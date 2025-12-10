@@ -6,6 +6,7 @@ $sql = $pdo->query("
     SELECT 
         member_id AS id,
         mailaddress AS email,
+        password,
         name
     FROM member
     ORDER BY member_id ASC
@@ -36,7 +37,7 @@ $accounts = $sql->fetchAll(PDO::FETCH_ASSOC);
     <tr>
         <td><?= htmlspecialchars($acc['id'], ENT_QUOTES, 'UTF-8') ?></td>
         <td><?= htmlspecialchars($acc['email'], ENT_QUOTES, 'UTF-8') ?></td>
-        <td>********</td>
+        <td><?= htmlspecialchars($acc['password'], ENT_QUOTES, 'UTF-8') ?></td>
         <td><?= htmlspecialchars($acc['name'], ENT_QUOTES, 'UTF-8') ?></td>
         <td>
             <a href="account-management.php?delete=<?= $acc['id'] ?>"
