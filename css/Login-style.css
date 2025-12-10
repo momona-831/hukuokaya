@@ -22,10 +22,11 @@ body {
 }
 
 header {
+  position: relative;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;      /* 少し余白 */
+  justify-content: center; /* h1 を中央寄せ */
+  margin-bottom: 10px;
 }
 
 header h1 {
@@ -33,7 +34,9 @@ header h1 {
   margin: 0;
 }
 
-.back, .close {
+.back {
+  position: absolute;       /* 左端に固定 */
+  left: 0;
   font-size: 22px;
   cursor: pointer;
 }

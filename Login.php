@@ -10,9 +10,10 @@
 
   <div class="login-container">
     <header>
-      <span class="back">←</span>
+      <a href="mainpage.php">
+        <span class="back">←</span>
+      </a>
       <h1>ログイン</h1>
-      <span class="close">×</span>
     </header>
 
     <!-- ログインフォーム -->

@@ -96,29 +96,39 @@ $popular_tags = $sql3->fetchAll(PDO::FETCH_ASSOC);
     <!-- アプリバー -->
     <header class="app-bar">
       <div class="headline">ふくおかやめいんぺーじ</div>
-      <div class="trailing-icons">
-        <a href="search.php">
-          <img src="img/click_scam.jpg" alt="検索" />検索
-        </a>
-        <?php if (isset($_SESSION['member_id'])): ?>
+      <div class="trailing-icons buttons are-small">
 
-          <!-- ログイン中 -->
-          <a href="logout.php" onclick="return confirm('ログアウトしますがよろしいですか？');">
-            <img src="img/icon-7.svg" alt="ログアウト" />
-            ログアウト
-          </a>
+  <!-- 検索 -->
+  <a href="search.php" class="button is-light">
+    <span class="icon">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </span>
+    <span>検索</span>
+  </a>
 
-        <?php else: ?>
+  <?php if (isset($_SESSION['member_id'])): ?>
+    <!-- ログアウト -->
+    <a href="logout.php"
+       class="button is-danger is-light"
+       onclick="return confirm('ログアウトしますがよろしいですか？');">
+      <span class="icon">
+        <i class="fa-solid fa-right-from-bracket"></i>
+      </span>
+      <span>ログアウト</span>
+    </a>
 
-          <!-- 未ログイン -->
-          <a href="Login.php">
-            <img src="img/icon-7.svg" alt="ログイン" />
-            ログイン
-          </a>
+  <?php else: ?>
+    <!-- ログイン -->
+    <a href="Login.php" class="button is-primary is-light">
+      <span class="icon">
+        <i class="fa-solid fa-user"></i>
+      </span>
+      <span>ログイン</span>
+    </a>
+  <?php endif; ?>
 
-        <?php endif; ?>
+</div>
 
-      </div>
     </header>
     <!-- メインコンテンツ -->
     <div class="content">
