@@ -1,4 +1,3 @@
-
 <?php 
 require 'db-connect.php';
 
@@ -36,13 +35,12 @@ switch ($sort) {
         $sql .= " ORDER BY product_id ASC";
         break;
     default:
-        $sql .= " ORDER BY product_id DESC"; // new（最新）
+        $sql .= " ORDER BY product_id DESC"; 
         break;
 }
 
 $stmt = $pdo->prepare($sql);
 
-// バインド
 if ($keyword !== '') {
     $stmt->bindValue(":kw", "%{$keyword}%", PDO::PARAM_STR);
 }
@@ -53,13 +51,16 @@ if ($category !== '') {
 $stmt->execute();
 $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// 削除処理
+// =======================================
+//   削除処理（listing_product から削除）
+// =======================================
 if (isset($_GET['delete_id'])) {
     $delete_id = intval($_GET['delete_id']);
+
     $del = $pdo->prepare("DELETE FROM listing_product WHERE product_id = ?");
     $del->execute([$delete_id]);
 
-    header("Location: admin_delete.php");
+    header("Location: https://aso2401194.main.jp/2025/hukuokayatest/admin_delete.php?delete");
     exit;
 }
 ?>
@@ -73,40 +74,16 @@ if (isset($_GET['delete_id'])) {
 </head>
 <body>
 
-  <!-- ====== サイドバー（テンプレ） ====== -->
-  <nav class="navigation-rail">
-      <div class="nav-item">
-        <a href="mainpage.php">
-          <img src="img/click_scam.jpg" alt="メインページ" />
-        </a>
-        <span>メインページ</span>
-      </div>
-      <div class="nav-item">
-        <a href="mypage.php">
-          <img src="img/click_scam.jpg" alt="マイページ" />
-        </a>
-        <span>マイページ</span>
-      </div>
-      <div class="nav-item">
-        <a href="cart-list.php">
-          <img src="img/click_scam.jpg" alt="カート" />
-        </a>
-        <span>カート</span>
-      </div>
-      <div class="nav-item">
-        <a href="listing.php">
-          <img src="img/click_scam.jpg" alt="出品" />
-        </a>
-        <span>出品</span>
-      </div>
-    </nav>
+<!-- ★★★ navbar の代わりに ribbon を追加 ★★★ -->
+<?php require 'ribbon.php'; ?>
 
-  <!-- タイトル -->
-  <button class="back">←</button>
-  <h1>商品管理</h1>
 
-  <!-- ====== コンテンツここから ====== -->
-  <div class="content">
+<!-- タイトル -->
+<button class="back">←</button>
+<h1>商品管理</h1>
+
+<!-- ====== コンテンツここから ====== -->
+<div class="content">
 
     <h2 class="section-title">検索</h2>
 
@@ -149,15 +126,15 @@ if (isset($_GET['delete_id'])) {
             </div>
 
             <a class="delete-btn"
-               href="admin_delete.php?delete_id=<?= $p['product_id'] ?>"
+               href="admin_products.php?delete_id=<?= $p['product_id'] ?>"
                onclick="return confirm('削除しますか？');">
                 🗑 削除
             </a>
         </div>
     <?php endforeach; ?>
 
-  </div>
-  <!-- ====== コンテンツここまで ====== -->
+</div>
+<!-- ====== コンテンツここまで ====== -->
 
 </body>
 </html>
