@@ -9,47 +9,63 @@ if (!isset($_SESSION['member_id'])) {
 }
 
 $member_id = (int)$_SESSION['member_id'];
-$product_id = (int)($_POST['product_id'] ?? 0);
 
-if ($product_id <= 0) {
+// ▼ 複数商品IDを受け取る
+$product_ids = $_POST['product_ids'] ?? [];
+
+if (!is_array($product_ids) || count($product_ids) === 0) {
     exit("商品が指定されていません。");
 }
 
 try {
 
-    // ======================
-    // ① 購入履歴登録
-    // ======================
-    $sql = $pdo->prepare("
-        INSERT INTO purchase_history
-            (member_id, product_id, purchase_date)
-        VALUES
-            (?, ?, NOW())
-    ");
-    $sql->execute([$member_id, $product_id]);
+    // トランザクション開始
+    $pdo->beginTransaction();
 
-    // ======================
-    // ② 商品を販売終了にする
-    // ======================
-    // 未販売=1 / 販売済み=0 
-    $sql = $pdo->prepare("
-        UPDATE listing_product
-           SET buy_flag = 0
-         WHERE product_id = ?
-    ");
-    $sql->execute([$product_id]);
+    foreach ($product_ids as $pid) {
 
-    // ======================
-    // ③ カートから削除
-    // ======================
-    $sql = $pdo->prepare("
-        DELETE FROM cart
-        WHERE member_id = ?
-          AND product_id = ?
-    ");
-    $sql->execute([$member_id, $product_id]);
+        $product_id = (int)$pid;
+        if ($product_id <= 0) {
+            continue;
+        }
+
+        // ======================
+        // ① 購入履歴登録
+        // ======================
+        $sql = $pdo->prepare("
+            INSERT INTO purchase_history
+                (member_id, product_id, purchase_date)
+            VALUES
+                (?, ?, NOW())
+        ");
+        $sql->execute([$member_id, $product_id]);
+
+        // ======================
+        // ② 商品を販売終了にする
+        // ======================
+        $sql = $pdo->prepare("
+            UPDATE listing_product
+               SET buy_flag = 1
+             WHERE product_id = ?
+        ");
+        $sql->execute([$product_id]);
+
+        // ======================
+        // ③ カートから削除
+        // ======================
+        $sql = $pdo->prepare("
+            DELETE FROM cart
+            WHERE member_id = ?
+              AND product_id = ?
+        ");
+        $sql->execute([$member_id, $product_id]);
+
+    }
+
+    $pdo->commit();
 
 } catch (PDOException $e) {
+    $pdo->rollBack();
     exit("購入処理エラー：" . htmlspecialchars($e->getMessage()));
 }
 ?>
