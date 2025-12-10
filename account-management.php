@@ -7,6 +7,7 @@ $sql = $pdo->query("
         member_id AS id,
         mailaddress AS email,
         password,
+        login_id,
         name
     FROM member
     ORDER BY member_id ASC
@@ -29,6 +30,7 @@ $accounts = $sql->fetchAll(PDO::FETCH_ASSOC);
         <th>ID</th>
         <th>メールアドレス</th>
         <th>パスワード</th>
+        <th>ログインID</th>
         <th>名前</th>
         <th>削除</th>
     </tr>
@@ -38,6 +40,7 @@ $accounts = $sql->fetchAll(PDO::FETCH_ASSOC);
         <td><?= htmlspecialchars($acc['id'], ENT_QUOTES, 'UTF-8') ?></td>
         <td><?= htmlspecialchars($acc['email'], ENT_QUOTES, 'UTF-8') ?></td>
         <td><?= htmlspecialchars($acc['password'], ENT_QUOTES, 'UTF-8') ?></td>
+        <td><?= htmlspecialchars($acc['login_id'], ENT_QUOTES, 'UTF-8') ?></td>
         <td><?= htmlspecialchars($acc['name'], ENT_QUOTES, 'UTF-8') ?></td>
         <td>
             <a href="account-management.php?delete=<?= $acc['id'] ?>"
