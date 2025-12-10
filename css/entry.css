@@ -1,5 +1,5 @@
 body {
-    background-color: #f8f4f9;
+    background-color: #ffffff;
     font-family: "Noto Sans JP", sans-serif;
     margin: 0;
     padding: 0;
@@ -55,7 +55,7 @@ input {
 button {
     display: block;
     width: 100%;
-    background-color: #ffffff;
+    background-color: black;
     color: #fff;
     padding: 10px;
     border: none;
@@ -67,5 +67,5 @@ button {
 }
 
 button:hover {
-    background-color: #ffffff;
+    background-color: black;
 }
