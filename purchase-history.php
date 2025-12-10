@@ -3,6 +3,7 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 session_start();
 
+
 if (!isset($_SESSION['member_id'])) {
     // ログインしていなければリダイレクト
     header('Location: Login.php?error=not_logged_in');
