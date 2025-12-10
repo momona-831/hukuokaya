@@ -61,3 +61,33 @@
   position: relative;
   z-index: 1;
 }
+
+.page-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.page-title-wrap {
+  display: flex;
+  align-items: center; /* 上下を中央揃え */
+  gap: 12px;           /* ← と文字の間に余白 */
+  margin-bottom: 24px;
+}
+
+/* Title */
+.page-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 0; /* 余白削除で綺麗に */
+}
+
+/* ← 戻るボタン */
+.back {
+  font-size: 22px;
+  color: #777;
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+}

@@ -35,7 +35,10 @@ try {
 <!-- account-infoページ専用CSS -->
 <link rel="stylesheet" href="css/account-info.css">
 
-<h1 class="page-title">アカウント情報</h1>
+<div class="page-title-wrap">
+    <a href="./mypage.php" class="back">←</a>
+    <h1 class="page-title">アカウント情報</h1>
+</div>
 
 <div class="content">
 
