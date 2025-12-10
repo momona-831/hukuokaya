@@ -21,7 +21,7 @@ body {
 /* ＝ ナビゲーションバー ＝ */
 .navigation-rail {
   width: 90px;
-  background-color: #ffffff;
+  background-color: #fff;
   color: black;
   display: flex;
   flex-direction: column;
