@@ -1,3 +1,4 @@
+
 <?php 
 require 'db-connect.php';
 
@@ -58,7 +59,7 @@ if (isset($_GET['delete_id'])) {
     $del = $pdo->prepare("DELETE FROM listing_product WHERE product_id = ?");
     $del->execute([$delete_id]);
 
-    header("Location: admin_products.php");
+    header("Location: admin_delete.php");
     exit;
 }
 ?>
@@ -102,7 +103,6 @@ if (isset($_GET['delete_id'])) {
 
   <!-- タイトル -->
   <button class="back">←</button>
-  <button class="cancel">×</button>
   <h1>商品管理</h1>
 
   <!-- ====== コンテンツここから ====== -->
@@ -149,7 +149,7 @@ if (isset($_GET['delete_id'])) {
             </div>
 
             <a class="delete-btn"
-               href="admin_products.php?delete_id=<?= $p['product_id'] ?>"
+               href="admin_delete.php?delete_id=<?= $p['product_id'] ?>"
                onclick="return confirm('削除しますか？');">
                 🗑 削除
             </a>
