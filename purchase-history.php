@@ -60,7 +60,7 @@ if (!isset($_SESSION['member_id'])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>購入履歴</title>
-  <link rel="stylesheet" href="css/cart-list.css"> 
+  <link rel="stylesheet" href="css/purchase-history.css"> 
 </head>
 <body>
 
