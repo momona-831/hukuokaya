@@ -1,0 +1,122 @@
+/* ＝ 全体レイアウト ＝ */
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
+  background-color: #ffffff;
+  color: #1d1b20;
+}
+
+.page-wrapper {
+  display: flex;
+  height: 100vh;
+}
+
+.page-content {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+
+/* ＝ タイトル ＝ */
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 24px;
+  color: #1d1b20;
+}
+
+
+/* ＝ 戻るボタン ＝ */
+.back {
+  background: none;
+  border: none;
+  margin-bottom: 8px;
+  padding: 0;
+}
+
+.back a {
+  text-decoration: none;
+  color: #1d1b20;
+  font-size: 20px;
+}
+
+
+/* ＝ 購入履歴リスト ＝ */
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+
+/* ＝ 商品カード ＝ */
+.cart-item {
+  display: flex;
+  background: #f7f7f7;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 20px;
+  transition: 0.2s ease;
+  border: 1px solid #e5e5e5;
+}
+
+.cart-item:hover {
+  background: #ececec;
+}
+
+
+/* ＝ 商品画像 ＝ */
+.cart-item img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-right: 16px;
+}
+
+
+/* ＝ 商品情報 ＝ */
+.cart-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cart-info h2 {
+  font-size: 18px;
+  margin: 0 0 6px;
+  color: #1d1b20;
+}
+
+.cart-info p {
+  font-size: 14px;
+  line-height: 1.6em;
+  color: #49454f;
+  margin: 6px 0 14px;
+}
+
+
+/* ＝ 再購入ボタン（Material3風） ＝ */
+.cart-info button {
+  width: 140px;
+  padding: 10px 0;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  background: #1d80e8;
+  transition: 0.2s ease;
+}
+
+.cart-info button:hover {
+  background: #0f6bc5;
+}
+
+.cart-info button a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  display: block;
+  text-align: center;
+}
