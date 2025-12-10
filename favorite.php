@@ -46,6 +46,7 @@ try {
     
   <main class="content">
     <!-- アプリバー -->
+    <button class="back"><a href="./mypage.php">←</a></button>
     <header class="app-bar">
       <div class="headline">お気に入り</div>
       <div class="trailing-icons">
