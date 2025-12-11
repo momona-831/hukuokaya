@@ -77,36 +77,6 @@ $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
       </div>
     </header>
 
-    <!-- ナビゲーションバー -->
-    <nav class="navigation-rail">
-      <div class="nav-item">
-        <a href="mainpage.php"><img src="img/click_scam.jpg"></a>
-        <img src="img/icon-3.svg" alt="メインページ" />
-        <span>メインページ</span>
-        </a>
-      </div>
-      <div class="nav-item">
-
-        <a href="mypage.php"><img src="img/click_scam.jpg"></a>
-        <a href="account-info.php">
-        <img src="img/icon-8.svg" alt="マイページ" />
-        <span>マイページ</span>
-        </a>
-      </div>
-      <div class="nav-item">
-        <a href="cart-list.php"><img src="img/click_scam.jpg"></a>
-        <img src="img/icon-8.svg" alt="カート" />
-        <span>カート</span>
-        </a>
-      </div>
-      <div class="nav-item">
-        <a href="listing.php"><img src="img/click_scam.jpg"></a>
-        <img src="img/icon-8.svg" alt="出品" />
-        <span>出品</span>
-        </a>
-      </div>
-    </nav>
-
   <div class="content"> 
       <h1>商品検索</h1>
 
