@@ -148,8 +148,8 @@ $popular_tags = $sql3->fetchAll(PDO::FETCH_ASSOC);
             $category_icons = [
               "ジャケット"         => "img/jacket.png",
               "パンツ"             => "img/pantu.jpg",  
-              "ビジネスバッグ"     => "img/bag.png",
-              "シャツ"             => "img/syatu.png",
+              "ビジネスバッグ"     => "img/bag.jpg",
+              "シャツ"             => "img/syutu.png",
               "ビジネスカジュアル" => "img/bizikazi.png",
               "アクセサリー"       => "img/nekutai.png",
             ];
