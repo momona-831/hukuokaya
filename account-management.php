@@ -51,6 +51,8 @@ $accounts = $sql->fetchAll(PDO::FETCH_ASSOC);
     </tr>
     <?php endforeach; ?>
 
+    
+
 </table>
 
 </body>

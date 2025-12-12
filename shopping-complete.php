@@ -101,8 +101,7 @@ try {
       </div>
 
       <div class="actions">
-        <a href="listing-completed.php">出品一覧を見る</a>
-        <a href="mainpage.php">メインページへ戻る</a>
+        <a href="account-management.php">アカウント削除</a>
       </div>
     </section>
   </main>
