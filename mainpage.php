@@ -1,4 +1,5 @@
 <?php
+ session_start();
 require 'db-connect.php';
 require 'ribbon.php';
 
@@ -13,7 +14,6 @@ $recommend = $sql->fetchAll(PDO::FETCH_ASSOC);
 
 
 // ▼ 過去購入商品（purchase_history が無いのでコメントアウト）
- session_start();
  $past_items = [];
  if (isset($_SESSION['member_id'])) {
      $member_id = $_SESSION['member_id'];
@@ -49,6 +49,7 @@ $popular_tags = $sql3->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>ふくおかやメインページ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="css/mainpage.css" />
 
   </head>
@@ -143,13 +144,33 @@ $popular_tags = $sql3->fetchAll(PDO::FETCH_ASSOC);
           </div>
         </div>
         <div class="items">
+          <?php
+            $category_icons = [
+              "ジャケット"         => "img/jacket.png",
+              "パンツ"             => "img/pantu.jpg",  
+              "ビジネスバッグ"     => "img/bag.png",
+              "シャツ"             => "img/syatu.png",
+              "ビジネスカジュアル" => "img/bizikazi.png",
+              "アクセサリー"       => "img/nekutai.png",
+            ];
+
+            $default_icon = "img/defalt.png"; // 未定義カテゴリはタグアイコン
+          ?>
+
           <?php foreach ($popular_tags as $tag): ?>
-            <div class="item-card">
-              <img src="img/click_scam.jpg" alt="">
-              <?= htmlspecialchars($tag['category']) ?>
+          <?php 
+            $category = $tag['category'];
+            // カテゴリに一致する画像があるか？
+            $icon = $category_icons[$category] ?? $default_icon;
+          ?>
+          <div class="item-card">
+            <img src="<?= $icon ?>" alt="">
+            <?= htmlspecialchars($category) ?>
             </div>
           <?php endforeach; ?>
         </div>
+
+
       </section>
 
       <!-- おすすめ商品 -->

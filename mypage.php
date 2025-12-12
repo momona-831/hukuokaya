@@ -1,6 +1,25 @@
 <?php 
-  require 'ribbon.php';
+session_start();
+require 'ribbon.php';
+require 'db-connect.php';
+
+/* admin_flg 取得 */
+$admin_flg = 0;
+
+if (isset($_SESSION['member_id'])) {
+    $sql = $pdo->prepare("
+        SELECT admin_flg
+        FROM member
+        WHERE member_id = ?
+    ");
+    $sql->execute([$_SESSION['member_id']]);
+    $row = $sql->fetch(PDO::FETCH_ASSOC);
+    if ($row) {
+        $admin_flg = (int)$row['admin_flg'];
+    }
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -34,6 +53,12 @@
     <div class="mypage-item">
       <a href="listing-completed.php">出品一覧</a>
     </div>
+    <?php if ($admin_flg == 1): ?>
+    <div class="mypage-item">
+      <a href="admin.php">管理者</a>
+    </div>
+    <?php endif; ?>
+
   </div>
 </body>
 </html>
